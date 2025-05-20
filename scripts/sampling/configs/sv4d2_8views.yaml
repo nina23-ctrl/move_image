@@ -6,10 +6,9 @@ model:
   target: sgm.models.diffusion.DiffusionEngine
   params:
     scale_factor: 0.18215
-    en_and_decode_n_samples_a_time: 7
+    en_and_decode_n_samples_a_time: 8
     disable_first_stage_autocast: True
-    ckpt_path: checkpoints/sv4d.safetensors
-
+    ckpt_path: checkpoints/sv4d2_8views.safetensors
     denoiser_config:
       target: sgm.modules.diffusionmodules.denoiser.Denoiser
       params:
@@ -43,7 +42,10 @@ model:
         use_linear_in_transformer: True
         use_spatial_context: True
         use_spatial_transformer: True
+        separate_motion_merge_factor: True
         use_motion_attention: True
+        use_3d_attention: False
+        use_camera_emb: True
 
     conditioner_config:
       target: sgm.modules.GeneralConditioner
@@ -110,6 +112,9 @@ model:
           is_trainable: False
           target: sgm.modules.encoders.modules.VideoPredictionEmbedderWithEncoder
           params:
+            is_ae: True
+            n_cond_frames: ${N_VIEW}
+            n_copies: 1
             encoder_config:
               target: sgm.models.autoencoder.AutoencoderKLModeOnly
               params:
@@ -129,9 +134,6 @@ model:
                   z_channels: 4
                 lossconfig:
                   target: torch.nn.Identity
-            is_ae: True
-            n_cond_frames: ${N_VIEW}
-            n_copies: 1
             sigma_sampler_config:
               target: sgm.modules.diffusionmodules.sigma_sampling.ZeroSampler
 
@@ -191,13 +193,16 @@ model:
     sampler_config:
       target: sgm.modules.diffusionmodules.sampling.EulerEDMSampler
       params:
+        num_steps: 50
         discretization_config:
           target: sgm.modules.diffusionmodules.discretizer.EDMDiscretization
           params:
             sigma_max: 500.0
         guider_config:
-          target: sgm.modules.diffusionmodules.guiders.LinearPredictionGuider
+          target: sgm.modules.diffusionmodules.guiders.SpatiotemporalPredictionGuider
           params:
-            max_scale: 2.5
+            max_scale: 2.0
+            min_scale: 1.5
             num_frames: ${N_FRAMES}
+            num_views: ${N_VIEW}
             additional_cond_keys: [ cond_view, cond_motion ]
