@@ -93,9 +93,6 @@ To run SVD or SV3D on a streamlit server:
   ![tile](assets/sv3d.gif)
 
 
-**November 30, 2023**
-- Following the launch of SDXL-Turbo, we are releasing [SD-Turbo](https://huggingface.co/stabilityai/sd-turbo).
-
 **November 28, 2023**
 - We are releasing SDXL-Turbo, a lightning fast text-to image model.
   Alongside the model, we release a [technical report](https://stability.ai/research/adversarial-diffusion-distillation)
@@ -257,8 +254,6 @@ The following models are currently supported:
   ```
 - [SDXL-base-0.9](https://huggingface.co/stabilityai/stable-diffusion-xl-base-0.9)
 - [SDXL-refiner-0.9](https://huggingface.co/stabilityai/stable-diffusion-xl-refiner-0.9)
-- [SD-2.1-512](https://huggingface.co/stabilityai/stable-diffusion-2-1-base/blob/main/v2-1_512-ema-pruned.safetensors)
-- [SD-2.1-768](https://huggingface.co/stabilityai/stable-diffusion-2-1/blob/main/v2-1_768-ema-pruned.safetensors)
 
 **Weights for SDXL**:
 
