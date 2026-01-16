@@ -14,3 +14,36 @@
 /src
 /.vscode
 **/__pycache__/
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Model checkpoints
+checkpoints/
+*.ckpt
+*.safetensors
+*.pt
+*.pth
+
+# Outputs
+outputs/
+*.mp4
+*.gif
+*.png
+*.jpg
+
+# Caches
+.cache/
+.huggingface/
+.torch/
+wandb/
+
+# OS
+.DS_Store
