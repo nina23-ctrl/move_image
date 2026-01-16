@@ -652,7 +652,7 @@ if __name__ == "__main__":
             del trainer_config["accelerator"]
             cpu = True
         else:
-            gpuinfo = trainer_config["devices"]
+            gpuinfo = trainer_config.get("devices", config.get("devices", 1))
             print(f"Running on GPUs {gpuinfo}")
             cpu = False
         trainer_opt = argparse.Namespace(**trainer_config)
@@ -663,7 +663,6 @@ if __name__ == "__main__":
 
         # trainer and callbacks
         trainer_kwargs = dict()
-
         # default logger configs
         default_logger_cfgs = {
             "wandb": {

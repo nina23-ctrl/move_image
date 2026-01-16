@@ -1,0 +1,22 @@
+seed: 23
+
+# 🔴 REQUIRED AT ROOT LEVEL
+devices: 1
+accelerator: gpu
+precision: 16
+
+trainer:
+  enable_checkpointing: false
+  logger: false
+
+model:
+  target: sgm.models.diffusion.DiffusionEngine
+  params:
+    network_config: {}
+    denoiser_config: {}
+    first_stage_config: {}
+    conditioner_config: {}
+
+data:
+  params: {}
+
