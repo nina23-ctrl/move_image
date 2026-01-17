@@ -27,8 +27,8 @@ RUN pip install torch torchvision torchaudio \
     --index-url https://download.pytorch.org/whl/cu121
 
 # --- Clone your repo ---
-RUN git clone https://github.com/nina23-ctrl/vast-ai-generative-models.git
-WORKDIR /workspace/vast-ai-generative-models
+RUN git clone https://github.com/nina23-ctrl/move_image.git
+WORKDIR /workspace/move_image
 
 # --- Python deps ---
 RUN pip install -r requirements.txt || true
