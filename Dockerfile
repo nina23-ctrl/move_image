@@ -28,7 +28,7 @@ RUN pip install torch torchvision torchaudio \
 
 # --- Clone your repo ---
 RUN git clone https://github.com/nina23-ctrl/move_image.git
-WORKDIR /workspace/move_image
+WORKDIR /workspace/move_image.git
 
 # --- Python deps ---
 RUN pip install -r requirements.txt || true
