@@ -6,8 +6,8 @@ from omegaconf import ListConfig
 import numpy as np
 import torch
 from einops import rearrange
-#from imWatermark import WatermarkEncoder
-#from omegaconf import ListConfig
+from imwatermark import WatermarkEncoder
+from omegaconf import ListConfig
 from PIL import Image
 from torch import autocast
 
